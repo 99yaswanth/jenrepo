@@ -24,7 +24,7 @@ pipeline{
         }
         stage("deploy"){
             steps{
-                sh "scp -o StrictHostKeyChecking=no /tmp/yashnv.pem target/hello-${buildno} ec2-user@3.88.166.114:/tmp"
+                sh "scp -o StrictHostKeyChecking=no /tmp/yashnv.pem target/hello-${buildno}.war ec2-user@3.88.166.114:/tmp"
                 sh "ssh -o StrictHostKeyChecking=no /tmp/yashnv.pem ec2-user@3.88.166.114 \"sudo cp /tmp/hello-${buildno} /var/lib/tomcat/webapps\""
             }
         }
