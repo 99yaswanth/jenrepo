@@ -11,7 +11,7 @@ pipeline{
             steps{
                 sh '''
                 aws s3 cp s3://yashwanth12/application/${buildno}/hello-${buildno}.war .
-                IFS = ';' read -ra outputArray <<< "${serverip}"
+                IFS=',' read -ra outputArray <<< "${serverip}"
                 for ip in \"${outputArray[@]}\"
                 do
                 echo $ip
